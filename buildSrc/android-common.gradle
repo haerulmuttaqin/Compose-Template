@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdk AndroidConfig.compileSdk
+
+    defaultConfig {
+        minSdk AndroidConfig.minSdk
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", AndroidConfig.baseURL)
+            buildConfigField("String", "IMAGE_URL", AndroidConfig.imageURL)
+            buildConfigField("String", "API_KEY", AndroidConfig.apiKey)
+            buildConfigField("Integer", "PAGE_SIZE", AndroidConfig.pageSize)
+            buildConfigField("Integer", "DEFAULT_PAGE_INDEX", AndroidConfig.defaultPageIndex)
+        }
+        debug {
+            buildConfigField("String", "BASE_URL", AndroidConfig.baseURL)
+            buildConfigField("String", "IMAGE_URL", AndroidConfig.imageURL)
+            buildConfigField("String", "API_KEY", AndroidConfig.apiKey)
+            buildConfigField("Integer", "PAGE_SIZE", AndroidConfig.pageSize)
+            buildConfigField("Integer", "DEFAULT_PAGE_INDEX", AndroidConfig.defaultPageIndex)
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
+
+        // Enable experimental coroutines APIs, including Flow
+        freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.Experimental"
+
+        // Enable experimental compose APIs
+        freeCompilerArgs =
+                freeCompilerArgs + "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
+        freeCompilerArgs =
+                freeCompilerArgs + "-opt-in=androidx.compose.animation.ExperimentalAnimationApi"
+        freeCompilerArgs =
+                freeCompilerArgs + "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi"
+        freeCompilerArgs =
+                freeCompilerArgs + "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi"
+        freeCompilerArgs =
+                freeCompilerArgs + "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi"
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = AndroidConfig.koltinCompilerVersion
+    }
+}
+
+dependencies {
+    implementation project(Modules.common)
+
+    implementation Main.coreKtx
+    implementation Misc.timber
+
+    implementation Misc.hiltAndroid
+    implementation Misc.hiltNavigationCompose
+    kapt Misc.hiltCompiler
+
+    testImplementation Testing.junit
+    androidTestImplementation Testing.extJunit
+    androidTestImplementation Testing.espressoCore
+}

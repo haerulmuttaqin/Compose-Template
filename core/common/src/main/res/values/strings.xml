@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Sadix Outlet Order</string>
+    <string name="txt_company" translatable="false">www.cpn.co.id</string>
+    <string name="alt_name" translatable="false">Outlet Order</string>
+
+    <string name="empty_string" translatable="false" />
+
+    <!-- Start Configuration Strings -->
+    <string name="default_notification_channel_id" translatable="false">default_notification_channel</string>
+    <!-- End Configuration Strings -->
+
+    <string name="txt_login">Login</string>
+    <string name="txt_register">Register</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_forgot_password">Forgot Password?</string>
+    <string name="please_input_information">Please input your information</string>
+
+    <!--Login Error Messages-->
+    <string name="login_error_msg_empty_email_mobile">Please enter your email or mobile number</string>
+    <string name="login_error_msg_empty_password">Please enter your password</string>
+    <string name="please_input_phone_number">Please input your phone number</string>
+    <string name="please_input_store_id">Please input store id</string>
+    <string name="please_input_your_address">Please input store id</string>
+    <string name="please_input_your_name">Please input your name</string>
+    <string name="please_input_email">Please input email address correctly</string>
+    <string name="please_take_store_picture">Please take store picture</string>
+    <string name="store_id">Store ID</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_address">Email Address</string>
+    <string name="please_input_pin">Please input your PIN number</string>
+    <string name="input_your_pin">Input Your PIN</string>
+    <string name="pin">PIN</string>
+    <string name="forgot_pin">Forgot PIN</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_category">Category</string>
+    <string name="nav_point">Point</string>
+    <string name="nav_account">Account</string>
+    <string name="app_name_alt">Sadix Customer Order</string>
+    <string name="nav_search">Search</string>
+    <string name="back">Back</string>
+    <string name="clear">Clear</string>
+    <string name="result_not_found">Result not found</string>
+    <string name="search_product">Search Products</string>
+</resources>
